@@ -64,7 +64,7 @@ One handy way to base own guidelines on this ones is to fork the repository and 
 
 ### 1.8. [Miscellaneous](#miscellaneous)
 
-## 2. [Links](#)
+## 2. [Links](#links)
 
 <h2 id="guidelines">Guidelines</h2>
 
@@ -1370,11 +1370,11 @@ Access modifiers of types, methods etc. shall go first.
 
 <h2 id="links">Links</h2>
 
-* [**Swift.org API Design Guidelines**](https://swift.org/documentation/api-design-guidelines/)
+[**Swift.org API Design Guidelines**](https://swift.org/documentation/api-design-guidelines/)
 
-Non-neglectable official guides. Though, focuses mainly on APIs and naming.
+Non-neglectable official guides. Though, focusing mainly on APIs and naming.
 
-* [Java Code Conventions](https://oracle.com/technetwork/java/codeconvtoc-136057.html)
+[**Java Code Conventions**](https://oracle.com/technetwork/java/codeconvtoc-136057.html)
 
 A good example of exhaustive code style for a programming language. Although it has many atavisms and old-fashioned rules, it's really surprising to come across such ugly formatting every here and there:
 
@@ -1388,6 +1388,6 @@ void layoutScreen() {
 }
 ```
 
-* [Steve McConnell – Code Complete: A Practical Handbook of Software Construction](https://en.wikipedia.org/wiki/Code_Complete)
+[**Steve McConnell – Code Complete: A Practical Handbook of Software Construction**](https://en.wikipedia.org/wiki/Code_Complete)
 
 Impressive work guiding software development in general, paying a lot of reader's attention on code style and giving an exhaustive explanation on each rule. 
