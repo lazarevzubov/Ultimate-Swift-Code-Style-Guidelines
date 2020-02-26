@@ -64,7 +64,7 @@ One handy way to base own guidelines on this ones is to fork the repository and 
 
 ### 1.8. [Miscellaneous](#miscellaneous)
 
-## 2. Links
+## 2. [Links](#)
 
 <h2 id="guidelines">Guidelines</h2>
 
@@ -638,7 +638,7 @@ UIKit's `UIControl` actions are called with the control's name in the beginning 
 
 ```swift
 @objc
-private func nextButtonAction(_ sender: UIButton) {
+private func nextButtonAction(_ sender: UIButton) { // ...
 ```
 
 The sender argument is optional since it stays unused very often nowadays.
@@ -647,7 +647,7 @@ The sender argument is optional since it stays unused very often nowadays.
 
 ```swift
 @objc
-private func onNextButtonTapped(_ sender: UIButton) {
+private func onNextButtonTapped(_ sender: UIButton) { // ...
 ```
 
 The latter naming convention is confusing because makes think of delegation. However, actions may be thought of as a kind of delegations, and naming convention like that might be considered as acceptable.
@@ -710,6 +710,10 @@ Similar rules are applied for nested types and enum cases. The shorthand notatio
 
 An engineer makes use of lazy instantiation for properties which aren't immediately needed. They also prefer complex lazily instantiated properties for subviews of UIKit's views and view controllers, especially over configuring them within view controller's lifecycle methods implementation (a common mistake is to write big and awkward `viewDidLoad()` implementations consisting of the full view controller's initial configuration).
 
+Conditional code checks "the golden path" (the most probable option) first. Inverted checks (like `!incorrect`) are discouraged because of poor readability. When both rules appear to be mutually exclusive, an alternative way to write down the flow must be considered.
+
+**Initialization**
+
 If initial or constant value of a property doesn't depend on the initializer's parameters, a default value is preferred over setting it within the initialization code.
 
 `.init()` is not used for initialization:
@@ -725,8 +729,6 @@ let color = UIColor(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 ```swift
 let color: UIColor = .init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 ```
-
-Conditional code checks "the golden path" (the most probable option) first. Inverted checks (like `!incorrect`) are discouraged because of poor readability. When both rules appear to be mutually exclusive, an alternative way to write down the flow must be considered.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -888,7 +890,7 @@ func fetchResults(
     transferringTo device: Device = .current,
     compressed: Bool = true,
     completionHandler: ((_ success: Bool) -> ())? = nil
-                 ) –> [Data]
+                  ) –> [Data]
 ```
 
 **Don't**:
@@ -1366,8 +1368,26 @@ Access modifiers of types, methods etc. shall go first.
 
 [Return to Table of Contents](#table-of-contents)
 
-## 2. Links
+<h2 id="links">Links</h2>
 
-[Swift.org API Design Guidelines](https://swift.org/documentation/api-design-guidelines/)
-[Java Code Conventions](https://oracle.com/technetwork/java/codeconvtoc-136057.html)
-[Steve McConnell – Code Complete: A Practical Handbook of Software Construction](https://en.wikipedia.org/wiki/Code_Complete)
+* [**Swift.org API Design Guidelines**](https://swift.org/documentation/api-design-guidelines/)
+
+Non-neglectable official guides. Though, focuses mainly on APIs and naming.
+
+* [Java Code Conventions](https://oracle.com/technetwork/java/codeconvtoc-136057.html)
+
+A good example of exhaustive code style for a programming language. Although it has many atavisms and old-fashioned rules, it's really surprising to come across such ugly formatting every here and there:
+
+**Don't**:
+
+```java
+void layoutScreen() {
+    layoutHeader()
+
+    layoutFooter()
+}
+```
+
+* [Steve McConnell – Code Complete: A Practical Handbook of Software Construction](https://en.wikipedia.org/wiki/Code_Complete)
+
+Impressive work guiding software development in general, paying a lot of reader's attention on code style and giving an exhaustive explanation on each rule. 
