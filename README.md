@@ -38,7 +38,7 @@ One handy way to base own guidelines on these ones is to fork the repository and
 
 #### 1.5.1. [Encapsulation](#encapsulation)
 
-### 1.6. [Implementaion](#implementation)
+### 1.6. [Implementation](#implementation)
 
 #### 1.6.1. [Methods](#implementation-methods)
 
