@@ -38,7 +38,7 @@ One handy way to base own guidelines on these ones is to fork the repository and
 
 #### 1.5.1. [Encapsulation](#encapsulation)
 
-### 1.6. [Implementaion](#implementaion)
+### 1.6. [Implementaion](#implementation)
 
 #### 1.6.1. [Methods](#implementation-methods)
 
@@ -568,7 +568,7 @@ In most cases variables have noun phrase names: `let number: Int`. The most sign
 
 <h4 id="types">Types</h4>
 
-Classes and structures are named using noun phrases. As well as protocols describing what an object is. Protocols which add abilities are named descriptively (e.g., `Sortable`). Generalization protocols can have the word `Procotol` at the end of their name:
+Classes and structures are named using noun phrases. As well as protocols describing what an object is. Protocols which add abilities are named descriptively (e.g., `Sortable`). Generalization protocols can have the word `Protocol` at the end of their name:
 
 ```swift
 protocol AnimatedViewProtocol {
@@ -582,7 +582,7 @@ final class AnimatedView: UIView, AnimatedViewProtocol {
 
 Types implementing design patterns are usually named with the pattern name at the end (e.g., `ViewBuilder`, `DisplayingStrategy`).
 
-No prefixes may be used (e.g., just `PriceCalculator` instead of `XYZPriceCalculator`), since there's no necessity for that in Swift (othen than to maintain consistency with Objective-C libraries and components).
+No prefixes may be used (e.g., just `PriceCalculator` instead of `XYZPriceCalculator`), since there's no necessity for that in Swift (other than to maintain consistency with Objective-C libraries and components).
 
 [Return to Table of Contents](#table-of-contents)
 
