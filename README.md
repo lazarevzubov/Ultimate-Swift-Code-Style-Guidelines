@@ -1,6 +1,6 @@
 # Ultimate Swift Code Style Guidelines
 
-The main purpose of these guidelines is to determine specific rules following of which may make one's code having a unified style – which improves readability and maintanability, hence less fallability. Most of other existing similar guidelines don't provide exhaustive requirements on any code style aspect, or aren't sufficiently accurate, or have their own purposes which don't correlate with the general software development. This document is a try to create one that does.
+The main purpose of these guidelines is to determine specific rules following which may make one's code having a unified style – which improves readability and maintainability, hence less fallibility. Most of the other existing similar guidelines don't provide exhaustive requirements on any code style aspect, or aren't sufficiently accurate, or have their own purposes which don't correlate with the general software development. This document is a try to create one that does.
 
 An engineer is free to use these guidelines changing any rules according to their wish. However, if any rule is broken it must be broken the same way across the whole project. I.e., any broken rule shall be replaced by another, instead of carelessly neglecting it.
 
@@ -318,7 +318,7 @@ final class GatewayStandartService: GatewayService, DataServerDelegate { // FIXM
 }
 ```
 
-File length doesn't have a specific line number limitation, since basically, code shall respect contemporary software development principles (mainly, S.O.L.I.D., and also complemented by their small siblings – D.R.Y., K.I.S.S. and Y.A.G.N.I.). Following the principles won't let an engineer to create an unacceptably long files. However, if an engineer isn't experienced and doesn't have an experienced reviewer, the number of 200 lines (including all formatting and comments) could be used for guidance. 
+File length doesn't have a specific line number limitation since basically, code shall respect contemporary software development principles (mainly, S.O.L.I.D., and also complemented by their small siblings – D.R.Y., K.I.S.S., and Y.A.G.N.I.). Following the principles won't let an engineer create an unacceptably long file. However, if an engineer isn't experienced and doesn't have an experienced reviewer, the number of 200 lines (including all formatting and comments) could be used for guidance. 
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -326,7 +326,7 @@ File length doesn't have a specific line number limitation, since basically, cod
 
 All imports go in the very beginning of the file and sorted lexicographically. Empty lines between imports are not used.
 
-More specific imports (like `Darwin`) are preferrable over less specific (like `Foundation`) to keep name space cleaner and probably, the resulting build thinner.
+More specific imports (like `Darwin`) are preferable over less specific (like `Foundation`) to keep namespace cleaner and probably, the resulting build thinner.
 
 More specific imports (like `Foundation`) are not imported explicitly if less specific ones (like `UIKit`) are also used.
 
@@ -387,7 +387,7 @@ Private methods are sorted by their first mention (earlier mentions go first). M
 
 <h4 id="protocol-conformances">Protocol Conformances</h4>
 
-Protocol conformances are added within separate extensions unless it's the main point of type existance.
+Protocol conformances are added within separate extensions unless it's the main point of type existence.
 
 **Do**:
 
@@ -459,11 +459,11 @@ extension SomeType: DifferentProtocol {
 
 <h3 id="explicit-documentation">Explicit Documentation</h3>
 
-Each non-private API have [HeaderDoc](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html) documentation even the API is well self-documented. The main assignment of having exhaustive documentation of public APIs is to be visible from different code base places through IDE's help features, such as quick help popovers.
+Each non-private API has [HeaderDoc](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html) documentation even the API is well self-documented. The main assignment of having exhaustive documentation of public APIs is to be visible from different code base places through IDE's help features, such as quick help popovers.
 
 Private APIs are well self-documented and have no explicit documentation in order not to distract from reading implementation details.
 
-Indicating method's time complexity in documentation usually is a good idea.
+Indicating the method's time complexity in documentation usually is a good idea.
 
 One line documentation is denoted as `\\\`:
 
@@ -473,7 +473,7 @@ One line documentation is denoted as `\\\`:
 
 Multi-line documentation is put between `/**` and `*/` each of which must be on separate lines. `*` prefixes on new lines are not used.
 
-Basic structure of multi-line descriptions:
+The basic structure of multi-line descriptions:
 
 **Do:**
 
@@ -502,7 +502,7 @@ Detailed description.
 /// - returns: Return value description.
 ```
 
-This recommended style also may appear familiar because of similarity to JavaDoc (which is not an end in itself, but adds some comfort for experienced engineers).
+This recommended style also may appear familiar because of similarity to JavaDoc (which is not an end in itself but adds some comfort for experienced engineers).
 
 All but summary are optional. The order shall be:
 - Summary 
@@ -511,7 +511,7 @@ All but summary are optional. The order shall be:
 - `Returns`
 - `Throws` 
 
-If the method has parameters they are necessary to be documented. Single parameter must be documented as `- Parameter: Description.` Multiple parameters must be documented by help of `- Parameters:` syntax. If the method have functions as parameters, their arguments must have labels and be documented, as well.
+If the method has parameters they are necessary to be documented. A single parameter must be documented as `- Parameter: Description.` Multiple parameters must be documented by the help of `- Parameters:` syntax. If the method has functions as parameters, their arguments must have labels and be documented, as well.
 
 If the method's return value type is not `Void` it's documented.
 
@@ -528,9 +528,9 @@ Summary.
 */
 ```
 
-Links, code snippets etc. must make use of [Apple Markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/) syntax.
+Links, code snippets, etc. must make use of [Apple Markup](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/) syntax.
 
-All text is written in American English, gramatically correct (including punctuation, such as periods at the end of each sentence). Every phrase (even not being a complete sentence) is ended by a period.
+All text is written in American English, grammatically correct (including punctuation, such as periods at the end of each sentence). Every phrase (even not being a complete sentence) is ended by a period.
 
 **Do**: `func summarizeFavorites()`
 
@@ -542,11 +542,11 @@ All text is written in American English, gramatically correct (including punctua
 
 Self-documented code is preferred over comments.
 
-If a commented code is being changed, the comments are either updated, or deleted. 
+If a commented code is being changed, the comments are either updated or deleted. 
 
 One line comments start with `\\`  (although `\\\` makes comments look fancier, it's reserved for HeaderDoc).
 
-Multi-line comments start with `\*` and end with `*\`. Those are placed on separate lines. No blank lines after symbols denoting the beginning of a comment and before ones at the end.
+Multi-line comments start with `\*` and end with `*\`. Those are placed on separate lines. No blank lines after symbols denoting the beginning of comment and before ones at the end.
 
 Comments, both single- and multi-line, are placed on the line above the commented code and separated from a preceding code by a blank line. The latter is not relevant if a comment is the first line of the scope. Also, it's acceptable to place one-line comments at the end of the commented line of code, separating it by a space, if and only if the comment doesn't make this line too long. 
 
@@ -554,7 +554,7 @@ Comments, both single- and multi-line, are placed on the line above the commente
 
 <h3 id="naming">Naming</h3>
 
-All declarations should be self-explanatory and consist of American English words and form correct human-readable phrases when readed aloud (i.e., not wording syntax symbols, such as function arguments brackets).
+All declarations should be self-explanatory and consist of American English words and form correct human-readable phrases when read aloud (i.e., not wording syntax symbols, such as function arguments brackets).
 
 Everything but types is `lowerCamelCase`. The types are `UpperCamelCase` (a.k.a. `PascalCase`).
 
@@ -562,7 +562,7 @@ Abbreviations don't have different cases within and are cased up or down accordi
 
 No underscores, even at the beginning of property names, for making it recognizable, are used. No Hungarian notation for constants (e.g., leading "k"), also.
 
-In most cases variables have noun phrase names: `let number: Int`. The most significant exception are Booleans which are expected to have assertive names (e.g., `let necessary: Bool`).
+In most cases variables have noun phrase names: `let number: Int`. The most significant exception is Booleans which are expected to have assertive names (e.g., `let necessary: Bool`).
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -606,7 +606,7 @@ init(name: String, id: Int)
 func makeView(position: CGPoint, size: CGSize) -> UIView
 ```
 
-It's very common to force engineers to put an object of delegation as a first argument of delegation methods. This is not strictly necessary and is used only in cases when it is really possible and makes sense for a type to be a delegate of multiple objects of the same type.
+It's very common to force engineers to put an object of delegation as the first argument of delegation methods. This is not strictly necessary and is used only in cases when it is really possible and makes sense for a type to be a delegate of multiple objects of the same type.
 
 **Do**:
 
@@ -656,15 +656,15 @@ The latter naming convention is confusing because makes you think of delegation.
 
 <h3 id="api">API</h3>
 
-Basically, types representing pure values which could be fairly interchanged by values themselves should be `struct`, otherwise (e.g., objects containing state of having a lifecycle) – `class`. Other considerations for choosing over `struct`s and `class`es – expected semantics, memory management etc., are not of the topic of this document.
+Basically, types representing pure values which could be fairly interchanged by values themselves should be `struct`, otherwise (e.g., objects containing state of having a lifecycle) – `class`. Other considerations for choosing over `struct`s and `class`es – expected semantics, memory management, etc., are not of the topic of this document.
 
 Properties are expected to have a constant time complexity. If one doesn't it's changed to a method.
 
 Optional Booleans and collections are avoided because they bring degraded states: for example, what's the difference between an empty array and a `nil` array within the same context?
 
-Free functions are usually a design flow. If one exists, an engineer double checks whether it really shouldn't correspond to any type.
+Free functions are usually a design flow. If one exists, an engineer double-checks whether it really shouldn't correspond to any type.
 
-Methods which do some actions don't return objects of these actions (e.g., a presenting view controller method shall not return the presented view controller).
+Methods that do some actions don't return objects of these actions (e.g., a presenting view controller method shall not return the presented view controller).
 
 **Do**:
 
@@ -690,13 +690,13 @@ Abbreviations (except for the common ones) and shortenings are avoided. (Possibl
 
 <h4 id="encapsulation">Encapsulation</h4>
 
-Any class declaration gains of adding `final` modifier, an egnineer adds it as a default and remove in case of a real necessity. (Experienced engineers prefer composition over inheritance.)
+Any class declaration gains of adding `final` modifier, an engineer adds it as a default and remove in case of a real necessity. (Experienced engineers prefer composition over inheritance.)
 
 `fileprivate` access modifier is usually a code smell. An engineer must re-consider an alternative design approach (e.g., nested types).
 
 The default access modifier, namely `internal`, is not specified explicitly (as well as any other default, generally).
 
-`class` type members are rarely useful because of discouraging to use inheritance, especially for the static members. An engineer must be aware of use cases of `class` and `static` modifiers, confusing them is a common mistake.
+`class` type members are rarely useful because of discouraging to use inheritance, especially for the static members. An engineer must be aware of the use-cases of `class` and `static` modifiers, confusing them is a common mistake.
 
 Generally, encapsulation is honored in any way. E.g. `@IBOutlet` properties and `@IBAction` methods are always private. Implementation details are hidden behind meaningful API.
 
@@ -704,17 +704,17 @@ Generally, encapsulation is honored in any way. E.g. `@IBOutlet` properties and 
 
 <h3 id="implementation">Implementation</h3>
 
-An engineer makes use of the type inference and the current name space. Compiler notifies them when the explicit type is necessary. However, there might be occasions when explicit types make code a little bit, though significantly, more effective.
+An engineer makes use of the type inference and the current namespace. Compiler notifies them when the explicit type is necessary. However, there might be occasions when explicit types make code a little bit, though significantly, more effective.
 
-Similar rules are applied for nested types and enum cases. The shorthand notation starting with dot is preferred whenever is possible.
+Similar rules are applied for nested types and enum cases. The shorthand notation starting with a dot is preferred whenever is possible.
 
-An engineer makes use of lazy instantiation for properties which aren't immediately needed. They also prefer complex lazily instantiated properties for subviews of UIKit's views and view controllers, especially over configuring them within view controller's lifecycle methods implementation (a common mistake is to write big and awkward `viewDidLoad()` implementations consisting of the full view controller's initial configuration).
+An engineer makes use of lazy instantiation for properties that aren't immediately needed. They also prefer complex lazily instantiated properties for subviews of UIKit's views and view controllers, especially over configuring them within view controller's lifecycle methods implementation (a common mistake is to write big and awkward `viewDidLoad()` implementations consisting of the full view controller's initial configuration).
 
 Conditional code checks "the golden path" (the most probable option) first. Inverted checks (like `!incorrect`) are discouraged because of poor readability. When both rules appear to be mutually exclusive, an alternative way to write down the flow must be considered.
 
 **Initialization**
 
-If initial or constant value of a property doesn't depend on the initializer's parameters, a default value is preferred over setting it within the initialization code.
+If the initial or constant value of a property doesn't depend on the initializer's parameters, a default value is preferred over setting it within the initialization code.
 
 `.init()` is not used for initialization:
 
@@ -763,13 +763,13 @@ Methods, as well as any code part, follow the Big-S. (Single Responsibility Prin
 
 <h4 id="optionality">Optionality</h4>
 
-An engineer avoids force-unwraps. Basically, if any object is optional that's because it really might be `nil` in certain conditions. If an engineer is 100% sure (which is, I'm 100% sure, impossible) that the optional value can't be `nil`, it's better to state their point of view explicitly. For instance, by adding some kind of assertion inside `guard let`-`else` statement.
+An engineer avoids force-unwraps. Basically, if an object is optional that's because it really might be `nil` in certain conditions. If an engineer is 100% sure (which is, I'm 100% sure, impossible) that the optional value can't be `nil`, it's better to state their point of view explicitly. For instance, by adding some kind of assertion inside `guard let`-`else` statement.
 
 A possibly justified reason to have a force-unwrapped variable is late initialization. However, the latter may also be error-prone and sometimes is avoided.
 
-Another acceptable reason to have a force-unrwrap is an optional API which returns `nil` only if there's a programming error (e.g., creating a URL from `String` in Foundation library: `let url = URL(string: "https://www.apple.com")!` – that one just can't return `nil` unless there's a serious typo). However, an engineer doesn't rely on third-party APIs' implementation details since they might change any moment and without notice. 
+Another acceptable reason to have a force-unwrap is an optional API which returns `nil` only if there's a programming error (e.g., creating a URL from `String` in Foundation library: `let url = URL(string: "https://www.apple.com")!` – that one just can't return `nil` unless there's a serious typo). However, an engineer doesn't rely on third-party APIs' implementation details since they might change any moment and without notice. 
 
-In testing code force-unwraps are welcomed because if they fail, the test fails, too, and that is a desired behavior in this case.
+In testing code, force-unwraps are welcomed because if they fail, the test fails, too, and that is the desired behavior in this case.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -819,7 +819,7 @@ private func configure(button: UIButton) {
 }
 ```
 
-In the latter example, `button` is initialized once, within the `viewDidLoad()` method. Once it's set, `configure(button:)` is called – a pure function that doesn't rely on any kind of state and has no side effects. That is, it always results the same way for the same arguments.
+In the latter example, the `button` is initialized once, within the `viewDidLoad()` method. Once it's set, `configure(button:)` is called – a pure function that doesn't rely on any kind of state and has no side effects. That is, it always results in the same way for the same arguments.
 
 _I'm aware that it's not the canonical, functional, definition of the term "pure function". Here I use it in the OOP context, if I may, for a simple basic understanding of the idea._
 
@@ -829,7 +829,7 @@ _I'm aware that it's not the canonical, functional, definition of the term "pure
 
 Basically, an engineer tests interfaces, not implementation details – by calling public APIs with some input data and asserting the expected outputs. 
 
-The testing purposes don't intervene the principles of encapsulation. If anything is wanted to be overridden or substantiated in the test code, protocols and their mock or stub implementations are always to the rescue.
+The testing purposes don't intervene in the principles of encapsulation. If anything is wanted to be overridden or substantiated in the test code, protocols and their mock or stub implementations are always to the rescue.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -869,7 +869,7 @@ func process(task: T) -> String
 
 <h4 id="formatting-methods">Methods</h4>
 
-A method declaration is placed on a single line if it can fit most display screen widths without a carry-over. Otherwise each parameter is placed on its own line and match the beginning of the previous one. Return type carries on to the last parameter's line.
+A method declaration is placed on a single line if it can fit most display screen widths without a carry-over. Otherwise, each parameter is placed on its own line and matches the beginning of the previous one. Return type carries on to the last parameter's line.
 
 **Do**:
 
@@ -942,7 +942,7 @@ private func acceptanceButtonAction(_ sender: UIButton) {
 
 **Line breaks**
 
-Long expressions are broken into several parts on different lines so that the symbol that connects two parts of an expression starts the new line. Each new line is indented with one additional indentation. Having a special character starting a new line avoids creating the illusion that a new line is a new statement.
+Long expressions are broken into several parts on different lines so that the symbol that connects two parts of expression starts the new line. Each new line is indented with one additional indentation. Having a special character starting a new line avoids creating the illusion that a new line is a new statement.
 
 **Do**:
 ```swift
@@ -1031,7 +1031,7 @@ requestMoreMoney() { spend($0) }
 requestMoreMoney(completionHandler: { spend($0) })
 ```
 
-Functional style is preferable whenever possible: explicit argument names are omitted (placeholders like `$0` are used), one line closure content scope is placed on the same line with braces.
+The functional style is preferable whenever possible: explicit argument names are omitted (placeholders like `$0` are used), one line closure content scope is placed on the same line with braces.
 
 **Don't**:
 
@@ -1099,7 +1099,7 @@ else {
 }
 ```
 
-If another style is preferred, braces position are never in mixed style.
+If another style is preferred, braces position is never in a mixed style.
 
 Multiple conditions of a single `if`-statement are placed on separate lines. Using commas instead of logic "and" (`&&`) is preferred.
 
@@ -1166,7 +1166,7 @@ guard !array.isEmpty
 
 Multiple and complex logical conditions are distinguished with braces, like: `let goodToGo = (firstNumber > 0 || firstNumber < -10) && isFirstTry`.
 
-Unnecessary paretheses within `if`-statement conditions are avoided:
+Unnecessary parentheses within `if`-statement conditions are avoided:
 
 **Do**:
 
@@ -1180,7 +1180,7 @@ if happens { // ...
 if (number != 0) { // ...
 ```
 
-If control flow's main token is followed by a left parens, exactly one standard whitespace is inserted between them.
+If the control flow's main token is followed by left parentheses, exactly one standard whitespace is inserted between them.
 
 The ternary operator `?`-`:` is not used where the single `if`-check is sufficient because although it can save lines, it makes the intention unclear and spawns extra entities (empty tuples or functions).
 
@@ -1300,7 +1300,7 @@ let fullName = "Nikita\n"
 
 Long numbers have underscores separating groups of digits: `1_000_000_000`
 
-Floating point numbers all carry an explicit decimal fraction, even when zero. Breaking this rule leads to ambiguity when decimal number variables are assigned with new values: `let interval: TimeInterval = 2.0`
+Floating-point numbers all carry an explicit decimal fraction, even when zero. Breaking this rule leads to ambiguity when decimal number variables are assigned with new values: `let interval: TimeInterval = 2.0`
 
 **Don't**:
 
@@ -1322,7 +1322,7 @@ The constants within a type declaration are grouped logically into private case-
 
 <h4 id="colons">Colons</h4>
 
-Colons always have no space on the left and one space on the right. Exceptions are: the ternary operator (`?`-`:`), the empty dictionary (`[:]`) and the selector syntax (e.g., `addTarget(_:action:)`).
+Colons always have no space on the left and one space on the right. Exceptions are the ternary operator (`?`-`:`), the empty dictionary (`[:]`) and the selector syntax (e.g., `addTarget(_:action:)`).
 
 **Do**: `let scoreTable: [String: Int] = [:]`
 
@@ -1344,15 +1344,15 @@ All operators (including `=`) have exactly one standard whitespace before and on
 
 No semicolons, never, at all. The only case in Swift when they are necessary is multiple statements on a single line, which is strongly discouraged.
 
-Only latin alphabet and numbers are used in the source code. That means no Cyrillic alphabet, hieroglyphs, emojis, etc. Although the Swift programming language supports any UTF symbols, they are hard to reproduce using some of various localized keyboards and encourage error-prone copying-and-pasting. 
+Only the Latin alphabet and numbers are used in the source code. That means no Cyrillic alphabet, hieroglyphs, emojis, etc. Although the Swift programming language supports any UTF symbols, they are hard to reproduce using some of the various localized keyboards and encourage error-prone copying-and-pasting. 
 
-Unused code (including imports and resources) must be deleted. As well as empy and completely inherited implementations.
+Unused code (including imports and resources) must be deleted. As well as empty and completely inherited implementations.
 
-Although empty blocks of code indicate design flaws, if needed they are placed on one line and have exactly one standard space symbol between parenthesis. Empty methods are formatted as regular ones having one line inside which is a comment explaining why this method is empty. 
+Although empty blocks of code indicate design flaws if needed they are placed on one line and have exactly one standard space symbol between parenthesis. Empty methods are formatted as regular ones having one line inside which is a comment explaining why this method is empty. 
 
 **Void**
 
-`()`, `Void` and `(Void)` are syntactically interchangeable. However, the first one means an empty tuple which can be used, for example, as denoting a free function without parameters. The second one is used as an empty return from a free function. The latter is just a pointless usage of a possibility to put any statement between braces and is not used. 
+`()`, `Void` and `(Void)` are syntactically interchangeable. However, the first one means an empty tuple that can be used, for example, as denoting a free function without parameters. The second one is used as an empty return from a free function. The latter is just a pointless usage of a possibility to put any statement between braces and is not used. 
 
 **Do**: `let completionHandler: () -> Void`
 
@@ -1376,7 +1376,7 @@ Non-neglectable official guides. Though, focusing mainly on APIs and naming.
 
 [**Java Code Conventions**](https://oracle.com/technetwork/java/codeconvtoc-136057.html)
 
-A good example of exhaustive code style for a programming language. Although it has many atavisms and old-fashioned rules, it's really surprising to come across such ugly formatting every here and there:
+A good example of an exhaustive code style for a programming language. Although it has many atavisms and old-fashioned rules, it's really surprising to come across such ugly formatting every here and there:
 
 **Don't**:
 
