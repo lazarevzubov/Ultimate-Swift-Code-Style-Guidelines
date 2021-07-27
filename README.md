@@ -573,13 +573,9 @@ In most cases variables have noun phrase names: `let number: Int`. The most sign
 Classes and structures are named using noun phrases. As well as protocols describing what an object is. Protocols which add abilities are named descriptively (e.g., `Sortable`). Generalization protocols can have the word `Protocol` at the end of their name:
 
 ```swift
-protocol AnimatedViewProtocol {
-    // ...
-}
+protocol AnimatedViewProtocol { }
 
-final class AnimatedView: UIView, AnimatedViewProtocol {
-    // ...
-}
+final class AnimatedView: UIView, AnimatedViewProtocol { }
 ```
 
 Types implementing design patterns are usually named with the pattern name at the end (e.g., `ViewBuilder`, `DisplayingStrategy`).
@@ -892,7 +888,7 @@ func fetchResults(
     transferringTo device: Device = .current,
     compressed: Bool = true,
     completionHandler: ((_ success: Bool) -> ())? = nil
-                  ) –> [Data]
+) –> [Data]
 ```
 
 **Don't**:
@@ -1288,7 +1284,7 @@ Multi-line strings are preferred over concatenation.
 let fullName = """
     Nikita
     Lazarev-Zubov
-"""
+               """
 ```
 
 **Don't**:
@@ -1297,6 +1293,8 @@ let fullName = """
 let fullName = "Nikita\n"
     + "Lazarev-Zubov"
 ```
+
+An exception could be `NSLocalizedString`s because the genstrings tool won't handle Swift's multi-line strings properly.
 
 **Numbers**
 
