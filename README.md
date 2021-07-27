@@ -1370,6 +1370,10 @@ Access modifiers of types, methods etc. shall go first.
 
 <h2 id="links">Links</h2>
 
+[**Finding the Ultimate Swift Code-Style Guidelines**](https://betterprogramming.pub/finding-the-ultimate-swift-code-style-guidelines-59025a7c163c)
+
+A brief introduction to this guidelines.
+
 [**Swift.org API Design Guidelines**](https://swift.org/documentation/api-design-guidelines/)
 
 Non-neglectable official guides. Though, focusing mainly on APIs and naming.
