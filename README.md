@@ -62,6 +62,8 @@ One handy way to base own guidelines on these ones is to fork the repository and
 
 #### 1.7.6. [Colons](#colons)
 
+#### 1.7.7. [Pre-processor Directives](#macros)
+
 ### 1.8. [Miscellaneous](#miscellaneous)
 
 ## 2. [Links](#links)
@@ -1451,6 +1453,34 @@ All operators (including `=`, but excluding the already discussed `:`) have exac
 **Do**: `let a = b + c`
 
 **Don't**: `if (b+c) == 1 {`
+
+[Return to Table of Contents](#table-of-contents)
+
+<h4 id="macros">Pre-processor Directives</h4>
+
+Any macros shall not be indented, the surrounded code shall be formatted as if the macro doesn't exist.
+
+**Do**:
+
+```swift
+func handleLogin() {
+#if DEBUG
+    printDebugInfo()
+#endif
+    openHomeScreen()
+}
+```
+
+**Don't**:
+
+```swift
+func handleLogin() {
+    #if DEBUG
+        printDebugInfo()
+    #endif
+    openHomeScreen()
+}
+```
 
 [Return to Table of Contents](#table-of-contents)
 
