@@ -954,6 +954,30 @@ func fetchResults(from endpoint: URL, transferringTo device: Device,
 
 In the latter example parameters, which go second on the lines are hard to notice.
 
+A bottomline: here's the prioritized order, in which the arguments are formatted, depending on the available space:
+
+**Do**:
+
+```swift
+func doSomething1(argument1: Int, argument2: Int)
+
+func doSomething2(argument1: Int, 
+                  argument2: Int,
+                  argument3: Int)
+
+func doSomething3(
+    argument1: Int, argument2: Int, argument3: Int, argument4: Int
+)
+
+func doSomething4(
+    argument1: Int,
+    argument2: Int,
+    argument3: Int,
+    argument4: Int,
+    argument5: Int
+)
+``` 
+
 **Custom operators**
 
 Operator functions have a whitespace between the implemented operator's name and the left parens.
