@@ -926,17 +926,6 @@ A method declaration is placed on a single line if it can fit most display scree
 **Do**:
 
 ```swift
-func fetchResults(from endpoint: URL,
-                  transferringTo device: Device,
-                  compressed: Bool,
-                  completionHandler: (() -> Void)?) –> [Data]
-```
-
-If any of the parameters don't fit the maximum line width, the option with parentheses on separate lines is acceptable.
-
-**Do** (or rather an acceptable formatting option):
-
-```swift
 func fetchResults(
     from endpoint: URL = .remoteServerPath,
     transferringTo device: Device = .current,
@@ -948,11 +937,16 @@ func fetchResults(
 **Don't**:
 
 ```swift
+func fetchResults(from endpoint: URL,
+                  transferringTo device: Device,
+                  compressed: Bool,
+                  completionHandler: (() -> Void)?) –> [Data]
+
 func fetchResults(from endpoint: URL, transferringTo device: Device, 
                   compressed: Bool, completionHandler: (() -> Void)?) –> [Data]
 ```
 
-In the latter example parameters, which go second on the lines are hard to notice.
+In the former example, the formatting will be broken if the function is renamed. In the latter example, parameters, which go second on the lines are hard to notice.
 
 A bottomline: here's the prioritized order, in which the arguments are formatted, depending on the available space:
 
@@ -960,10 +954,6 @@ A bottomline: here's the prioritized order, in which the arguments are formatted
 
 ```swift
 func doSomething1(argument1: Int, argument2: Int)
-
-func doSomething2(argument1: Int, 
-                  argument2: Int,
-                  argument3: Int)
 
 func doSomething3(
     argument1: Int, argument2: Int, argument3: Int, argument4: Int
@@ -1377,26 +1367,26 @@ switch direction {
 
 **Arrays**
 
-Array literals shall not contain spaces after the left square bracket and before the right one. The included items shall be listed one below another, aligned at the same level of indentation. The first element shall be on the declaration's line. The closing bracket shall go on the same line with the last item. However, if items are short and their sequence can be read easily (e.g., integer literals) it's acceptable to have them all on the one line.
+Array literals shall not contain spaces after the left square bracket and before the right one. The included items shall be listed one below another, aligned at the same level of indentation. The first element shall be on the line right next after the declaration. The closing bracket shall go on the next line after the last item. However, if items are short and their sequence can be read easily (e.g., integer literals) it's acceptable to have them all on the one line.
 
 **Do**:
 
 ```swift
 var numbers = [1, 2, 3]
 
-let airVehicles = [helicopter,
-                   airLiner,
-                   carrierRocket,
-                   wings]
+let airVehicles = [
+    helicopter,
+    airLiner,
+    carrierRocket,
+    wings
+]
 ```
 
 **Don't**:
 ```swift
-var numbers = [
-    1, 
-    2, 
-    3
-]
+var numbers = [1, 
+               2, 
+               3]
               
 let airVehicles = [helicopter, airLiner, carrierRocket, wings]
 ```
