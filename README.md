@@ -1,12 +1,12 @@
 # Ultimate Swift Code Style Guidelines
 
-The main purpose of these guidelines is to determine specific rules, following which may make an engineers's code have a unified style – which improves readability and maintainability, hence less fallibility. Most of the other existing similar guidelines don't provide exhaustive requirements on any code style aspect, or aren't sufficiently accurate, or have their own purposes which don't correlate with the general software development. This document is a try to create one that does.
+These guidelines define a concrete, opinionated set of Swift style rules. Following them helps keep the codebase consistent, which improves readability, maintainability, and reduces defects.
 
-An engineer is free to use these guidelines, changing any rules according to their wish. However, if any rule is broken, it must be "broken" the same way across the whole project. I.e., any broken rule shall be replaced by another.
+You can adopt these rules as-is or modify them for your project. If you intentionally diverge from a rule, apply the alternative consistently across the whole codebase.
 
-One handy way to base own guidelines on these ones is to fork the repository and change any rule. However, if an engineer feels that something is completely wrong and should be fixed, they are free to fork and create a pull-request for initiating a discussion.
+If you believe a rule is incorrect or unclear, propose a change via a pull request so the team can discuss it.
 
-<h2 id="table-of-contents">Table of Сontents</h2>
+<h2 id="table-of-contents">Table of Contents</h2>
 
 ## 1. [Guidelines](#guidelines)
 
@@ -14,7 +14,7 @@ One handy way to base own guidelines on these ones is to fork the repository and
 
 #### 1.1.1. [Files and Directories](#files-and-directories)
 
-#### 1.1.2. [CVS](#cvs)
+#### 1.1.2. [VCS](#cvs)
 
 ### 1.2. [File Structure](#file-structure)
 
@@ -72,33 +72,33 @@ One handy way to base own guidelines on these ones is to fork the repository and
 
 <h3 id="project">Project</h3>
 
-Projects don't tolerate any warnings.
+Do not allow compiler, linter, or analyzer warnings in the project.
 
-Type, function, and names, documentation, comments – everything, shall be written in American English.
+Write type names, function names, documentation, and comments—everything—in American English.
 
 [Return to Table of Contents](#table-of-contents)
 
 <h4 id="files-and-directories">Files and Directories</h4>
 
-All sub-folders and files in a folder or a project section are sorted alphabetically; first directories, then files.
+Sort items alphabetically within each folder or project group: list directories first, then files.
 
-Files sorting doesn't consider files' extensions. However, an engineer is strongly encouraged to name files to have files which are close to each other semantically, allowing them to be close to each other in the list.
+When sorting, ignore file extensions. Name files so that related files are close to each other in the list.
 
-Files are called after their containing types, or the primary one in the case of multiple type declarations.
+Name a file after the type it contains (or the primary type if it contains multiple top-level declarations).
 
-If the primary content of the file is a type extension, the file shall be named after this type, optionally concatenating a `+` sign and conformance protocol name (e.g. `String+ConvertibleToNumber.swift`). It's acceptable to name a file without a protocol name  if the file contains multiple protocol conformances or helper and convenience methods (e.g. `String.swift`).
+If a file primarily contains an extension, name it after the extended type. Optionally append `+` and the conformance name (for example, `String+ConvertibleToNumber.swift`). Omit the protocol name if the file contains multiple conformances or miscellaneous helpers (for example, `String.swift`).
 
 [Return to Table of Contents](#table-of-contents)
 
-<h4 id="cvs">CVS</h4>
+<h4 id="cvs">VCS</h4>
 
-_Not going deeply into the topic, since each CVS has its own guidelines._
+_This section is intentionally brief because each VCS and each team may have additional conventions._
 
-Every commit is atomic and presents a meaningful and working state of the project, including documentation and tests. Checking out at any commit results in a working software. Considering these two rules, an engineer shall think thoroughly about implementation phases, or refactoring steps.
+Make every commit atomic and meaningful. Ensure each commit represents a working state of the project (including documentation and tests), so checking out any commit yields a buildable, runnable codebase. Plan implementation and refactoring steps accordingly.
 
-Commit names are formulated in the imperative case ("Do the thing"). Comprehensive details are optional and separated by a blank line if present.
+Write commit messages in the imperative mood (for example, “Add caching to gateway requests”). Add details in the body when helpful; separate the subject and body with a blank line.
 
-Any temporary code, debug console output, and such shall never be committed.
+Never commit temporary code, debug-only logging, or ad-hoc console output.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -115,11 +115,11 @@ File is divided into sections by `// MARK:` comments. Root declarations (e.g. tw
 // MARK: -Methods
 ```
 
-Indentation shall be made with whitespaces, because tab symbols can be represented differently in different environments. One level of indentation is four whitespaces. Two whitespaces is an acceptable option.
+Indentation shall be made with spaces, because tab symbols can be represented differently in different environments. One level of indentation is four spaces. Two spaces is an acceptable option.
 
-Braces should be weighted: If there's a whitespace after the opening brace, there always must be one before the closing brace. Type declarations shall always have such whitespaces coming with braces, methods shall not.
+Keep braces balanced: if you add inner spaces after `{`, add them before `}` as well. In this document, type declarations use spaced braces, and function/method bodies do not.
 
-Methods with implementation shall be always separated by an empty line. Method declarations and any properties shall not.
+Separate method implementations with a single blank line. Do not insert blank lines between property declarations or between method signatures in a protocol.
 
 Files shall end with a single blank line.
 
@@ -158,7 +158,7 @@ protocol GatewayService {
 
 // MARK: -
 
-final class GatewayStandartService: GatewayService {
+final class GatewayStandardService: GatewayService {
 
     enum GatewayType {
 
@@ -208,11 +208,11 @@ final class GatewayStandartService: GatewayService {
 
 // MARK: - DataServerDelegate
 
-extension GatewayStandartService: DataServerDelegate {
+extension GatewayStandardService: DataServerDelegate {
 
     // MARK: - Methods
 
-    // MARK: GatewayStandartService protocol methods
+    // MARK: GatewayStandardService protocol methods
 
     func connectionEstablished() {
         notifyDelegate()
@@ -225,7 +225,7 @@ extension GatewayStandartService: DataServerDelegate {
     // MARK: Private methods
 
     private func notifyDelegate() {
-        delegete?.dataUpdated()
+        delegate?.dataUpdated()
     }
 
 }
@@ -252,7 +252,7 @@ protocol GatewayService { // FIXME: Absent file structural divider and an empty 
 
     var active: Bool { get }
     var data: [GatewayDataObject] { get }
-    var delegate: GatewayServiceDelegate? { get set } // FIXME: Less strict accessable properties should go first.
+    var delegate: GatewayServiceDelegate? { get set } // FIXME: Less strict accessible properties should go first.
 
     // MARK: - Methods
 
@@ -262,7 +262,7 @@ protocol GatewayService { // FIXME: Absent file structural divider and an empty 
 
 // MARK: -
 
-final class GatewayStandartService: GatewayService, DataServerDelegate { // FIXME: Additional conformances should be declared in extensions.
+final class GatewayStandardService: GatewayService, DataServerDelegate { // FIXME: Additional conformances should be declared in extensions.
 
     // MARK: - Properties
 
@@ -304,7 +304,7 @@ final class GatewayStandartService: GatewayService, DataServerDelegate { // FIXM
 
     } // FIXME: Empty lines in the beginning and the end of the method.
 
-    // MARK: GatewayStandartService protocol methods
+    // MARK: GatewayStandardService protocol methods
 
     func connectionEstablished() {
         notifyDelegate()
@@ -317,13 +317,13 @@ final class GatewayStandartService: GatewayService, DataServerDelegate { // FIXM
     // MARK: Private methods
 
     private func notifyDelegate() {
-        delegete?.dataUpdated()
+        delegate?.dataUpdated()
     }
 
     enum GatewayType { // FIXME: Nested types accessible from the outside should go first.
         case demo
         case stage
-    } // FIXME: No whitespaces after the opening and before the closing brace.
+    } // FIXME: No spaces after the opening and before the closing brace.
 
 }
 ```
@@ -363,11 +363,9 @@ File length doesn't have a specific line number limitation, since basically, cod
 
 <h4 id="imports">Imports</h4>
 
-All imports go in the very beginning of the file and sorted lexicographically. Empty lines between imports are not used.
+Place all imports at the top of the file. List one import per line, sort them lexicographically, and do not insert blank lines between them.
 
-More specific imports (like `Darwin`) are preferable over less specific (like `Foundation`) to keep namespace cleaner and probably, the resulting build thinner.
-
-More specific imports (like `Foundation`) are not used explicitly if less specific ones (like `UIKit`) are also used.
+Import the narrowest module(s) you actually use. Avoid redundant imports (for example, do not import `Foundation` if you already import `UIKit`).
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -555,10 +553,10 @@ Two HeaderDoc parts are divided by a single blank line. However, if there's no d
 **Do:**
 
 ```swift
-// Summary.
-// - Parameter parameter: Parameter description.
-// - Returns: Return value description.
-// - Throws: Exception description.
+/// Summary.
+/// - Parameter parameter: Parameter description.
+/// - Returns: Return value description.
+/// - Throws: Exception description.
 ```
 
 **Don't:**
@@ -583,15 +581,15 @@ There's no blank lines between a documentation comment and the documented member
 
 <h4 id="comments">Comments</h4>
 
-Self-documented code is preferred over comments.
+Prefer self-documenting code over comments.
 
-If a commented code is changed, the comments shall be either updated or deleted. 
+If you change commented code, update the comment or delete it.
 
-One-line comments start with `\\`  (although `\\\` makes comments look "fancier" in IDE, it's reserved for HeaderDoc.)
+Start single-line comments with `//`. Use `///` only for documentation comments (HeaderDoc/DocC).
 
-Multi-line comments start with `\*` and end with `*\`. Comment delimiters are placed on separate lines. There's no blank lines after symbols denoting the beginning of comment and before ones at the end.
+Start multi-line comments with `/*` and end them with `*/`. Put the delimiters on their own lines, and do not add blank lines immediately after `/*` or immediately before `*/`.
 
-Comments, both single- and multi-line, are placed on the line above the commented code and separated from a preceding code by a blank line. The latter is not relevant if a comment is the first line of the scope. Also, it's acceptable to place one-line comments at the end of the commented line of code, separating by a space, if and only if the comment doesn't make this line too long. 
+Place comments on the line above the commented code. Separate a comment from the preceding code with a blank line (except when the comment is the first line in a scope). You may place a short single-line comment at the end of a code line if it does not make the line too long.
 
 [Return to Table of Contents](#table-of-contents)
 
@@ -727,7 +725,7 @@ func presentErrorAlert()
 **Don't**:
 
 ```swift
-func presentErrorAlert() -> UIAlertViewController
+func presentErrorAlert() -> UIAlertController
 ```
 
 However, if the return value might be useful in some specific situations, it doesn't force one to use it (the `@discardableResult` annotation serves this purpose). Though, such return values are not encouraged. An engineer shall follow the principle of [the command-query separation](https://en.wikipedia.org/wiki/Command–query_separation).
@@ -789,7 +787,7 @@ let color: UIColor = .init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 Any scope contains only elements of the same level of abstraction (i.e., either variables and related direct calculations, or method calls of the same layer of abstraction).
 
 **Do**:
-```
+```swift
 func viewDidLoad() {
     super.viewDidLoad()
     presenter.viewLoaded()
@@ -797,7 +795,7 @@ func viewDidLoad() {
 ```
 
 **Don't**:
-```
+```swift
 func viewDidLoad() {
     super.viewDidLoad()
 
@@ -830,7 +828,7 @@ In testing code, force-unwraps are more welcome because if they fail, the test f
 Clean functions are preferred over state-changing ones. Unidirectional flow is preferred over side effects. It makes code less error-prone, improves readability and testability.
 
 **Don't**:
-```
+```swift
 private var button: UIButton!
 
 // ...
@@ -852,7 +850,7 @@ In the example above it's hard to track the actions' sequence.
 
 **Do**:
 
-```
+```swift
 private var button: UIButton! {
     didSet { configure(button: button) }
 }
@@ -906,7 +904,7 @@ let bottom: CGPoint
 **Do**:
 
 ```swift
-typealias Task = (_ token: Sting) -> (_ result: Result<Data, Error>)
+typealias Task = (_ token: String) -> (_ result: Result<Data, Error>)
 func enqueue(task: Task)
 ```
 
@@ -931,7 +929,7 @@ func fetchResults(
     transferringTo device: Device = .current,
     compressed: Bool = true,
     completionHandler: ((_ success: Bool) -> ())? = nil
-) –> [Data]
+) -> [Data]
 ```
 
 **Don't**:
@@ -940,10 +938,10 @@ func fetchResults(
 func fetchResults(from endpoint: URL,
                   transferringTo device: Device,
                   compressed: Bool,
-                  completionHandler: (() -> Void)?) –> [Data]
+                  completionHandler: (() -> Void)?) -> [Data]
 
 func fetchResults(from endpoint: URL, transferringTo device: Device, 
-                  compressed: Bool, completionHandler: (() -> Void)?) –> [Data]
+                  compressed: Bool, completionHandler: (() -> Void)?) -> [Data]
 ```
 
 In the former example, the formatting will be broken if the function is renamed. In the latter example, parameters, which go second on the lines are hard to notice.
@@ -970,7 +968,7 @@ func doSomething4(
 
 **Custom operators**
 
-Operator functions have a whitespace between the implemented operator's name and the left parens.
+Operator functions have a space between the implemented operator's name and the left parens.
 
 **Do**:
 
@@ -980,7 +978,7 @@ static func == (lhs: StreetAddress, rhs: StreetAddress) -> Bool {
 
 **Line length**
 
-Java Code Conventions can be used for deducing a maximum symbols-per-line value. Or common sense, as an option – from 80 to 120 symbols per line.
+Java Code Conventions can be used for deducing a maximum characters-per-line value. Or common sense, as an option – from 80 to 120 symbols per line.
 
 **Annotations**
 
@@ -1023,7 +1021,7 @@ Code within the scope (e.g., method's implementation) is separated into logical 
 ```swift
 func makeOrderViewController(orderNumber: Int) -> UIViewController {
     guard let order = Order(orderNumber: Int) else {
-        fatalError("Unexisting order.")
+        fatalError("Non-existent order.")
     }
 
     let model = OrderModel(orderNumber: orderNumber)
@@ -1289,7 +1287,7 @@ if (number != 0) {
     // ...
 ```
 
-If the control flow's main token is followed by left parentheses, exactly one standard whitespace is inserted between them.
+If the control flow's main token is followed by left parentheses, exactly one standard space is inserted between them.
 
 The ternary operator `?`-`:` shall not be used where the single `if`-check is sufficient, because although it can save lines, it makes the intention unclear and spawns extra entities (empty tuples or functions).
 
@@ -1343,7 +1341,7 @@ switch direction {
     case .left:
         turnLeft()
     case .right:
-        turnRight():
+        turnRight()
     case .straight:
         break
 }
@@ -1462,7 +1460,7 @@ The ampersand in composition statements (`Codable & Encodable`) is surrounded by
 
 **Operators**
 
-All operators (including `=`, but excluding the already discussed `:`) have exactly one standard whitespace before and after.
+All operators (including `=`, but excluding the already discussed `:`) have exactly one standard space before and after.
 
 **Do**: `let a = b + c`
 
@@ -1518,7 +1516,7 @@ func buttonAction() {
 
 **Void**
 
-`()`, `Void` and `(Void)` are syntactically interchangeable. However, the first one means an empty tuple that can be used, for example, as empty list of argumants of a closure. The second one is used as an empty return from a closure. The latter is just a pointless usage of a possibility to put any statement between parentheses and is not used. 
+`()`, `Void` and `(Void)` are syntactically interchangeable. However, the first one means an empty tuple that can be used, for example, as empty list of arguments of a closure. The second one is used as an empty return from a closure. The latter is just a pointless usage of a possibility to put any statement between parentheses and is not used. 
 
 **Do**: `let completionHandler: () -> Void`
 
@@ -1542,11 +1540,11 @@ A brief introduction to these guidelines.
 
 [**Swift.org API Design Guidelines**](https://swift.org/documentation/api-design-guidelines/)
 
-Non-neglectable official guidelines, focused mainly on API and naming.
+Non-negotiable official guidelines, focused mainly on API and naming.
 
 [**Java Code Conventions**](https://oracle.com/technetwork/java/codeconvtoc-136057.html)
 
-A inspiring example of an exhaustive code style for a programming language. Though, it has many atavisms and old-fashioned rules. It's really surprising to come across such an ugly formatting every here and there:
+An inspiring example of an exhaustive code style for a programming language. Though, it has many atavisms and old-fashioned rules. It's really surprising to come across such an ugly formatting every now and then:
 
 **Don't**:
 
