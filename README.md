@@ -14,8 +14,6 @@ If you believe a rule is incorrect or unclear, propose a change via a pull reque
 
 #### 1.1.1. [Files and Directories](#files-and-directories)
 
-#### 1.1.2. [VCS](#cvs)
-
 ### 1.2. [File Structure](#file-structure)
 
 #### 1.2.1. [Imports](#imports)
@@ -87,18 +85,6 @@ When sorting, ignore file extensions. Name files so that related files are close
 Name a file after the type it contains (or the primary type if it contains multiple top-level declarations).
 
 If a file primarily contains an extension, name it after the extended type. Optionally append `+` and the conformance name (for example, `String+ConvertibleToNumber.swift`). Omit the protocol name if the file contains multiple conformances or miscellaneous helpers (for example, `String.swift`).
-
-[Return to Table of Contents](#table-of-contents)
-
-<h4 id="cvs">VCS</h4>
-
-_This section is intentionally brief because each VCS and each team may have additional conventions._
-
-Make every commit atomic and meaningful. Ensure each commit represents a working state of the project (including documentation and tests), so checking out any commit yields a buildable, runnable codebase. Plan implementation and refactoring steps accordingly.
-
-Write commit messages in the imperative mood (for example, “Add caching to gateway requests”). Add details in the body when helpful; separate the subject and body with a blank line.
-
-Never commit temporary code, debug-only logging, or ad-hoc console output.
 
 [Return to Table of Contents](#table-of-contents)
 
