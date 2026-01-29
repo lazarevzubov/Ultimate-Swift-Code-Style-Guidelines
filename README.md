@@ -12,7 +12,7 @@ If you believe a rule is incorrect or unclear, propose a change via a pull reque
 
 ### 1.1. [Project](#project)
 
-#### 1.1.1. [Files and Directories](#files-and-directories)
+#### 1.1.1. [Files and Folders](#files-and-folders)
 
 ### 1.2. [File Structure](#file-structure)
 
@@ -74,9 +74,9 @@ Do not allow compiler, linter, or analyzer warnings in the project.
 
 Write type names, function names, documentation, and comments—everything—in American English.
 
-<h4 id="files-and-directories">Files and Directories</h4>
+<h4 id="files-and-folders">Files and Folders</h4>
 
-Sort items alphabetically within each folder or project group: list directories first, then files.
+Sort items alphabetically within each folder or project group: list folders first, then files.
 
 When sorting, ignore file extensions. Name files so that related files are close to each other in the list.
 
