@@ -74,8 +74,6 @@ Do not allow compiler, linter, or analyzer warnings in the project.
 
 Write type names, function names, documentation, and comments—everything—in American English.
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="files-and-directories">Files and Directories</h4>
 
 Sort items alphabetically within each folder or project group: list directories first, then files.
@@ -225,7 +223,6 @@ import GatewayFoundation
 import UIKit // FIXME: Unused import
 import Darwin // FIXME: Excessive import – Foundation includes Darwin.
 
-
 // FIXME: Extra empty line
 protocol GatewayServiceDelegate { // FIXME: Absent section dividers
 
@@ -345,15 +342,11 @@ struct ContentView: View {
 
 File length doesn't have a specific line number limitation, since basically, code shall respect contemporary software development principles (mainly, S.O.L.I.D., but also D.R.Y., K.I.S.S., Y.A.G.N.I., and so on.) Following the principles won't let an engineer create an unacceptably long file. However, if an engineer isn't experienced and doesn't have an experienced reviewer, the number of 200 lines (including all formatting and comments) could be used for guidance. Though, this doesn't mean that well organized files of the length of 201 or even 300 lines are necessarily evil – an engineer shall be guided by their common sense. 
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="imports">Imports</h4>
 
 Place all imports at the top of the file. List one import per line, sort them lexicographically, and do not insert blank lines between them.
 
 Import the narrowest module(s) you actually use. Avoid redundant imports (for example, do not import `Foundation` if you already import `UIKit`).
-
-[Return to Table of Contents](#table-of-contents)
 
 <h4 id="members-order">Members' Order</h4>
 
@@ -405,8 +398,6 @@ func viewDidDisappear() {
 Private methods are sorted by their first mention (mentioned earlier go first).
 
 Mixing public and private APIs shall be strictly avoided. However, placing methods in order of their usage and closer to the first calling (i.e., "as an engineer would read" the source file in order to understand the flow) is acceptable.
-
-[Return to Table of Contents](#table-of-contents)
 
 <h4 id="protocol-conformances">Protocol Conformances</h4>
 
@@ -563,8 +554,6 @@ Links to related methods are encouraged and implemented by means of tags. That i
 
 There's no blank lines between a documentation comment and the documented member.
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="comments">Comments</h4>
 
 Prefer self-documenting code over comments.
@@ -603,8 +592,6 @@ let necessary: Bool
 let isNecessary: Bool
 ```
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="types">Types</h4>
 
 Classes and structures are named using noun phrases, as well as protocols describing what an object is. Protocols which add abilities are named descriptively (e.g., `Sortable`). Protocols should not have the word `Protocol` at the end of the name. Instead, conforming types should have a specifying word in the name, because protocols are general, but classes and structures are specific.
@@ -626,8 +613,6 @@ struct Engine: EngineProtocol { }
 Types implementing design patterns are usually named with the pattern name at the end (e.g., `ViewBuilder`, `DisplayingStrategy`).
 
 No prefixes shall be used (e.g., just `PriceCalculator` instead of `XYZPriceCalculator`), since there's no necessity for that in Swift (other than, maybe, to maintain consistency with Objective-C libraries and components).
-
-[Return to Table of Contents](#table-of-contents)
 
 <h4 id="methods">Methods</h4>
 
@@ -722,8 +707,6 @@ Abbreviations and acronyms (except for the common ones) are avoided. (Possible e
 
 **Don't**: `let curValue = 1` (Though, it's acceptable in a very limited scope, like a method implementation).
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="encapsulation">Encapsulation</h4>
 
 Any class declaration gains from adding the `final` modifier, an engineer adds it by default and remove in case of a necessity. (An engineer shall prefer composition over inheritance.)
@@ -766,8 +749,6 @@ let color = UIColor(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 let color: UIColor = .init(displayP3Red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
 ```
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="implementation-methods">Methods</h4>
 
 Any scope contains only elements of the same level of abstraction (i.e., either variables and related direct calculations, or method calls of the same layer of abstraction).
@@ -795,8 +776,6 @@ func viewDidLoad() {
 
 Methods, as well as any code part, follow the Single Responsibility Principle. Beside maintainability, this doesn't let methods grow long and difficult to read. However, as for length, there might be exceptions. For example, complex drawing methods that can't be broken up into several small ones (or breaking up would make the code less readable.)
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="optionality">Optionality</h4>
 
 An engineer avoids force-unwraps. Basically, if an object is optional, that's because it really might be `nil` in certain conditions. If an engineer is 100% sure (which is usually impossible) that the optional value can't be `nil`, it's better to state their point of view explicitly. For instance, by adding some kind of assertion inside a `guard` statement.
@@ -806,8 +785,6 @@ A possibly justified reason to have a force-unwrapped variable is late initializ
 Another acceptable reason to have a force-unwrap is an optional API which returns `nil` only if there's a programming error (e.g., creating an URL from `String` in Foundation : `let url = URL(string: "https://www.apple.com")!`). However, an engineer should not rely on third-party APIs' implementation details since they might change any moment and without notice. 
 
 In testing code, force-unwraps are more welcome because if they fail, the test fails too, and this is desired.
-
-[Return to Table of Contents](#table-of-contents)
 
 <h4 id="state-and-side-effects">State and Side Effects</h4>
 
@@ -859,8 +836,6 @@ In the latter example, `button` is initialized once, within the `viewDidLoad()` 
 
 _I'm aware that it's not the canonical, functional, definition of the term "pure function". Here I use it in the OOP context, for a basic understanding of the idea._
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="testing">Testing</h4>
 
 An engineer tests interfaces, not implementation – by calling public APIs and asserting the expected output against an input. 
@@ -900,8 +875,6 @@ func enqueue(task: Task)
 typealias T = (Int, Int) -> (String)
 func process(task: T) -> String
 ```
-
-[Return to Table of Contents](#table-of-contents)
 
 <h4 id="formatting-methods">Methods</h4>
 
@@ -1061,8 +1034,6 @@ func getViewController() -> UIViewController {
 }
 ```
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="closures">Closures</h4>
 
 Trailing closure syntax is preferred anywhere possible. Therefore, methods with closures as arguments aren't overloaded differing only by the name of the trailing closures – that leads to ambiguity on the call site.
@@ -1132,8 +1103,6 @@ Button(action: proceed) {
 }
 .frame(maxWidth: 200.0)
 ```
-
-[Return to Table of Contents](#table-of-contents)
 
 <h4 id="control-flow">Control Flow</h4>
 
@@ -1345,8 +1314,6 @@ switch direction {
 
 `default` cases are not used (unless it's an imported, non `NS_CLOSED_ENUM`, Objective-C enumeration) because they may lead to erroneous states if new cases are added.
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="literals">Literals</h4>
 
 **Arrays**
@@ -1424,15 +1391,11 @@ let coordinate: CGFloat = 2.1
 coordinate = 2 // Without looking at the declaration it's impossible to know that it's a floating point number.
 ```
 
-[Return to Table of Contents](#table-of-contents)
-
 <h4 id="constants">Constants</h4>
 
 Global constants shall be avoided.
 
 The constants within a type declaration shall be grouped logically into private case-less `enum`s as their static properties. Using case-less `enum`s instead of structures or classes prevents unwanted initialization of the containing entity, without adding an explicit private empty initializer.
-
-[Return to Table of Contents](#table-of-contents)
 
 <h4 id="colons">Colons</h4>
 
@@ -1451,8 +1414,6 @@ All operators (including `=`, but excluding the already discussed `:`) have exac
 **Do**: `let a = b + c`
 
 **Don't**: `if (b+c) == 1 {`
-
-[Return to Table of Contents](#table-of-contents)
 
 <h4 id="macros">Pre-processor Directives</h4>
 
@@ -1544,4 +1505,4 @@ void layoutScreen() {
 
 [**Steve McConnell – Code Complete: A Practical Handbook of Software Construction**](https://en.wikipedia.org/wiki/Code_Complete)
 
-An impressive work, guiding software development in general, paying a lot of reader's attention on the code style, exhaustive explanations included. 
+An impressive work, guiding software development in general, paying a lot of reader's attention on the code style, exhaustive explanations included.
