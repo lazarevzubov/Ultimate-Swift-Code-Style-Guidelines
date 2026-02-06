@@ -88,7 +88,7 @@ If a file primarily contains an extension, name it after the extended type. Opti
 
 <h3 id="file-structure">File Structure</h3>
 
-File is divided into sections by `// MARK:` comments. Root declarations (e.g. two classes on the same level) are separated by `// MARK: -`. Declarations within the same group of a type are gathered together in sections, like `// MARK: - Methods`. Multiple declarations within a group – like `// MARK: Private methods`. This type of comments (as well as any other) is kept close to grammatically correct language.
+Divide the file into sections using `// MARK:` comments. Separate top-level declarations (for example, two types declared at the same level) with `// MARK: -`. Group related members into sections such as `// MARK: - Methods`, and use more specific markers for subgroups (for example, `// MARK: Private methods`). Write `// MARK:` comments in grammatically correct English.
 
 **Don't:**
 ```swift
@@ -99,13 +99,13 @@ File is divided into sections by `// MARK:` comments. Root declarations (e.g. tw
 // MARK: -Methods
 ```
 
-Indentation is made with spaces, because tab symbols can be represented differently in different environments. One level of indentation is four spaces. Two spaces is an acceptable option.
+Indent using spaces, because tabs may render differently across environments. Use four spaces per indentation level (two spaces is acceptable if the whole project uses it consistently).
 
 Keep braces balanced: if you add inner spaces after `{`, add them before `}` as well. In this document, type declarations use spaced braces, and function/method bodies do not.
 
 Separate method implementations with a single blank line. Do not insert blank lines between property declarations or between method signatures in a protocol.
 
-End files with a single blank line.
+End each file with a single trailing newline.
 
 *Examples of file structure:*
 
@@ -320,43 +320,43 @@ import SwiftUI
 
 struct ContentView: View {
 
-	// MARK: - Properties
+    // MARK: - Properties
 
-	// MARK: View protocol properties
+    // MARK: View protocol properties
 
-	var body: some View {
-		VStack {
-			Text("Hello, \(name)!")
-			Text("And have a nice day.")
-		}
-			.frame(maxWidth: 200.0)
-	}
+    var body: some View {
+        VStack {
+            Text("Hello, \(name)!")
+            Text("And have a nice day.")
+        }
+            .frame(maxWidth: 200.0)
+    }
 
-	// MARK: Private properties
+    // MARK: Private properties
 
-	@State
-	private var name = "Steve"
+    @State
+    private var name = "Steve"
 
 }
 ```
 
-File length doesn't have a specific line number limitation, since basically, code shall respect contemporary software development principles (mainly, S.O.L.I.D., but also D.R.Y., K.I.S.S., Y.A.G.N.I., and so on.) Following the principles won't let an engineer create an unacceptably long file. However, if an engineer isn't experienced and doesn't have an experienced reviewer, the number of 200 lines (including all formatting and comments) could be used for guidance. Though, this doesn't mean that well organized files of the length of 201 or even 300 lines are necessarily evil – use you common sense as a general guidance.
+Do not enforce a hard limit on file length. Keep files small by following modern design principles (for example, SOLID, DRY, KISS, and YAGNI). As a rule of thumb, treat ~200 lines (including formatting and comments) as a review prompt—not a strict limit. Well-structured files longer than 200 lines can still be acceptable; use your judgment.
 
 <h4 id="imports">Imports</h4>
 
-Place all imports at the top of the file. List one import per line, sort them lexicographically, and do not insert blank lines between them.
+Place all imports at the top of the file. Put one import per line, sort them lexicographically, and do not insert blank lines between them.
 
 Import the narrowest module(s) you actually use. Avoid redundant imports (for example, do not import `Foundation` if you already import `UIKit`).
 
 <h4 id="members-order">Members' Order</h4>
 
-Properties within a subgroup, as well as enum cases, shall be ordered, firstly, by its access modifier, then by the class/instance membership type, then lexicographically.
+Order properties within a subgroup (and enum cases) first by access level, then by `static` vs instance membership, then lexicographically.
 
-Logical sorting is acceptable, but not encouraged and may be used only if all neighboring declarations can be sorted logically. Partially logical and partially lexicographical ordering is not used.
+Logical ordering is acceptable but not encouraged. Use it only when all neighboring declarations form a clear logical sequence. Do not mix logical and lexicographical ordering within the same subgroup.
 
 Root declarations start from the beginning of the line. Each level of nesting adds a step of indentation.
 
-Sort public and internal methods in a logical order. It's always possible to decide on one for methods. For example, by remembering the type's lifecycle and methods' calling order.
+Order public and internal methods logically (for example, by lifecycle and call order).
 
 **Do**:
 
@@ -395,7 +395,7 @@ func viewDidDisappear() {
 
 ```
 
-Sort private methods by their first mention (mentioned earlier go first).
+Order private methods by first use (methods called earlier come first).
 
 Avoid mixing public and private APIs. However, placing methods in order of their usage and closer to the first calling (i.e., "as an engineer would read" the source file in order to understand the flow) is acceptable.
 
@@ -559,7 +559,7 @@ Don't add blank lines between a documentation comment and the documented member.
 
 Prefer self-documenting code over comments.
 
-If you change commented code, update the comment or delete it.
+If you change the code a comment refers to, update the comment or delete it.
 
 Start single-line comments with `//`. Use `///` only for documentation comments (HeaderDoc/DocC).
 
@@ -577,7 +577,7 @@ Everything but types is `lowerCamelCase`. The types are `UpperCamelCase` (a.k.a.
 
 Abbreviations don't have different cases within them and are cased up or down according to the rule above (e.g., `let asciiTable: [String : String]`, `class SMTPServer`). (A common mistake is to use `Id` instead of `ID` – a convention, common in other programming languages.)
 
-No underscores, even at the beginning of property names, ahould be used. No Hungarian notation for constants (e.g., leading "k") either.
+Do not use underscores, even at the beginning of property names. Do not use Hungarian notation for constants (for example, a leading "k").
 
 In most cases, variables have noun phrase names: `let number: Int`. The most significant exception is booleans which are expected to have assertive names (e.g., `let necessary: Bool`). Boolean names are preferred without a verb at the beginning, unless it introduces ambiguity:
 
@@ -678,15 +678,15 @@ The latter naming convention is confusing because makes you think of delegation.
 
 <h3 id="api">API</h3>
 
-Basically, types representing pure values which could be fairly interchanged by values themselves should be `struct`s, otherwise (e.g., objects containing state or having a lifecycle) – `class`s. Other considerations for choosing over `struct`s and `class`es – expected semantics, memory management, etc., are not the topic of this document.
+Prefer `struct` for value types. Prefer `class` for reference types (for example, objects with identity, state, or a lifecycle). Other considerations (semantics, memory management, and so on) are out of scope for this document.
 
-Properties are expected to have a constant time complexity. If one doesn't, it's changed to a method.
+Keep properties constant-time. If a computed property is not constant-time, convert it to a method.
 
 Avoid optional booleans and collections, because they bring degraded states: what's the difference between an empty array and a `nil` array within the same context?
 
-Free functions are usually a design flaw. Double-check, whether free functions really shouldn't correspond to some type.
+Avoid free functions. Double-check whether the function should belong to a type.
 
-Methods that perform an action don't return the object of the action (e.g., a presenting view controller method shall not return the presented view controller).
+Do not return the “object of the action” from a command-style method (for example, do not return the presented view controller from a `present…` method).
 
 **Do**:
 
@@ -710,9 +710,9 @@ Avoid abbreviations and acronyms (except for the common ones). (Possible excepti
 
 <h4 id="encapsulation">Encapsulation</h4>
 
-Any class declaration gains from adding the `final` modifier, add it by default and remove in case of a necessity. (Prefer composition over inheritance.)
+Add `final` to classes by default. Remove it only when you explicitly need inheritance. (Prefer composition over inheritance.)
 
-`fileprivate` access modifier is usually a code smell. Re-consider an alternative design approach (e.g., nested types).
+`fileprivate` access modifier is usually a code smell. Reconsider an alternative design approach (e.g., nested types).
 
 Don't specify the default access modifier, namely `internal`, explicitly (as well as any other default, in general).
 
@@ -724,13 +724,13 @@ Generally, honor encapsulation in any way. E.g., always declare `@IBOutlet` prop
 
 <h3 id="implementation">Implementation</h3>
 
-Makes use of type inference and the current namespace. The compiler notifies them when a type should be stated explicitly. However, there might be occasions when specifying a type explicitly makes compilation faster.
+Use type inference and the current namespace. The compiler notifies them when a type should be stated explicitly. However, there might be occasions when specifying a type explicitly makes compilation faster.
 
 Similar rules are applied to nested types and enum cases. The shorthand notation starting with a dot is preferred whenever is possible.
 
-Makes use of lazy initialization of the properties that aren't immediately needed. Also prefer complex lazily initialized properties for subviews of UIKit's views and view controllers, especially over configuring them within view controller's lifecycle methods (a common mistake is to write big and awkward `viewDidLoad()` implementations consisting of the full view controller's initial configuration.)
+Use lazy initialization for properties that are not immediately needed. Also prefer complex lazily initialized properties for subviews of UIKit's views and view controllers, especially over configuring them within view controller's lifecycle methods (a common mistake is to write big and awkward `viewDidLoad()` implementations consisting of the full view controller's initial configuration.)
 
-Conditional code checks "the golden path" (the most probable option) first. Inverted checks (like `!incorrect`) are discouraged because of poor readability. When both rules appear to be mutually exclusive, consider alternatives.
+Check the “golden path” (the most likely case) first. Avoid inverted checks (for example, `!incorrect`) because they reduce readability. If these rules conflict, refactor the condition for clarity.
 
 **Initialization**
 
@@ -779,11 +779,11 @@ Methods, as well as any code part, follow the Single Responsibility Principle. B
 
 <h4 id="optionality">Optionality</h4>
 
-Avoids force-unwraps. Basically, if an object is optional, that's because it really might be `nil` in certain conditions. If you are 100% sure (which is usually impossible) that the optional value can't be `nil`, it's better to state your point of view explicitly. For instance, by adding some kind of assertion inside a `guard` statement.
+Avoid force-unwraps. Basically, if an object is optional, that's because it really might be `nil` in certain conditions. If you are 100% sure (which is usually impossible) that the optional value can't be `nil`, it's better to state your point of view explicitly. For instance, by adding some kind of assertion inside a `guard` statement.
 
 A possibly justified reason to have a force-unwrapped variable is late initialization. However, the latter may also be error-prone and should be avoided.
 
-Another acceptable reason to have a force-unwrap is an optional API which returns `nil` only if there's a programming error (e.g., creating an URL from `String` in Foundation: `let url = URL(string: "https://www.apple.com")!`). However, you should not rely on third-party APIs' implementation details since they might change any moment and without notice.
+Another acceptable reason to have a force-unwrap is an optional API which returns `nil` only if there's a programming error (e.g., creating an URL from `String` in Foundation: `let url = URL(string: "https://www.apple.com")!`). However, you should not rely on third-party APIs' implementation details since they might change at any time and without notice.
 
 In testing code, force-unwraps are less discouraged because if they fail, the test fails too, and this is desired. However modern testing helpers like Testing's `#require` macro should be preferred.
 
@@ -837,15 +837,15 @@ In the latter example, `button` is initialized once, within the `viewDidLoad()` 
 
 <h4 id="testing">Testing</h4>
 
-Tests interfaces, not implementation – by calling public APIs and asserting the expected output against an input.
+Test interfaces, not implementation: call public APIs and assert expected output for a given input.
 
-Testing purposes don't intervene in the principles of encapsulation. If anything is wanted to be overridden or substantiated in testing code, protocols and their mock or stub implementations are always to the rescue.
+Do not break encapsulation for testing. If anything is wanted to be overridden or substantiated in testing code, protocols and their mock or stub implementations solve the problem.
 
 [Return to Table of Contents](#table-of-contents)
 
 <h3 id="formatting">Formatting</h3>
 
-Multiple variables declarations on a single line using the single `var`/`let` keywords (like `var x: Int, y: Int`) are restricted. Readability is not sacrificed for brevity.
+Avoid multiple variable declarations on a single line using a single `var`/`let` keyword (for example, `var x: Int, y: Int`). Do not sacrifice readability for brevity.
 
 Don't use custom horizontal alignment because it welcomes further maintenance problems:
 
@@ -904,7 +904,7 @@ func fetchResults(from endpoint: URL, transferringTo device: Device,
 
 In the former example, the formatting will be broken if the function is renamed. In the latter example, parameters, which go second on the lines are hard to notice.
 
-A bottomline: here's the prioritized order, in which the arguments are formatted, depending on the available space:
+Bottom line: here's the prioritized order, in which the arguments are formatted, depending on the available space:
 
 **Do**:
 
@@ -936,7 +936,7 @@ static func == (lhs: StreetAddress, rhs: StreetAddress) -> Bool {
 
 **Line length**
 
-Java Code Conventions can be used for deducing a maximum characters-per-line value. Or common sense, as an option – from 80 to 120 symbols per line.
+Use Java Code Conventions as a reference for maximum line length, or use common sense (typically 80–120 characters per line).
 
 **Annotations**
 
@@ -1157,20 +1157,20 @@ Place multiple conditions of a single `if`-statement on separate lines. Prefer u
 
 ```swift
 if password.isCorrect,
-    user.exist {
+    user.exists {
     // ...
 ```
 
 **Don't**:
 
 ```swift
-if password.isCorrect, user.exist {
+if password.isCorrect, user.exists {
     // ...
 ```
 
 ```swift
 if password.isCorrect
-    && user.exist {
+    && user.exists {
     // ...
 ```
 
@@ -1215,7 +1215,7 @@ if (number != 0) {
     // ...
 ```
 
-If the control flow's main token is followed by left parentheses, Insert exactly one standard space between them.
+If a control-flow keyword is followed by a left parenthesis, insert exactly one space between them.
 
 Don't use the ternary operator `?`-`:` where a single `if`-check is sufficient, because although it can save lines, it makes the intention unclear and spawns extra entities (empty tuples or functions).
 
@@ -1237,7 +1237,7 @@ error == nil
 
 Place ternary operator expressions on three lines, with line breaks before the first and the second symbols of the operator and one extra indentation level before the operator signs.
 
-Prefer `for`-`where` clauses over the `if`-statements nested inside loops.
+Prefer `for … where` clauses over `if` statements nested inside loops.
 
 Prefer clearly named, easy-to-understand local constants over inlined conditions:
 
@@ -1376,7 +1376,7 @@ Colons always have no space on the left and one space on the right. Exceptions a
 
 **Do**: `let scoreTable: [String : Int] = [:]`
 
-**Don't**s (three of them in a row – spot them all): `let scoreTable : [String: Int] = [ : ]`
+**Don't** (three of them in a row – spot them all): `let scoreTable : [String: Int] = [ : ]`
 
 Surround the ampersand in composition statements (`Codable & Encodable`) by spaces too.
 
@@ -1388,7 +1388,7 @@ All operators (including `=`, but excluding the already discussed `:`) have exac
 
 **Don't**: `if (b+c) == 1 {`
 
-<h4 id="macros">Pre-processor Directives</h4>
+<h4 id="macros">Preprocessor Directives</h4>
 
 Don't indent macros, format the surrounded code as if the macro doesn't exist.
 
@@ -1420,17 +1420,17 @@ func handleLogin() {
 
 Don't use semicolons. The only case in Swift when they are necessary is multiple statements on a single line, which are strongly discouraged.
 
-Use only the Latin alphabet and numbers in the source code (no Cyrillic alphabet, hieroglyphs, emojis, etc.). Although the Swift programming language supports any UTF symbols, they are hard to type using some of the various localized keyboards and encourage error-prone copying-and-pasting.
+Use only the Latin alphabet and numbers in the source code (no Cyrillic alphabet, hieroglyphs, emojis, etc.). Although the Swift programming language supports any UTF symbols, they are hard to type using some of the various localized keyboards and encourage error-prone copy/paste.
 
-Always remove unused code (including imports and resources), as well as empty or inherited method implementations.
+Remove unused code (including imports and resources), as well as empty or inherited method implementations.
 
-Although empty blocks of code indicate design flaws, if they are unavoidable, fill them with a comment explaining why they are empty:
+Empty blocks usually indicate a design problem. If you cannot avoid an empty block, add a comment explaining why it is empty:
 
 **Do**:
 
 ```swift
 func buttonAction() {
-    // The button is inactive in this state and don't need an action.
+    // The button is inactive in this state and does not need an action.
 }
 ```
 
